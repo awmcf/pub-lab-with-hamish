@@ -30,13 +30,19 @@ class TestPub < Minitest::Test
   end
 
   def test_sell_drink
-    @pub.sell_drink("Stella", 5)
+    @pub.sell_drink("Stella", 5, 18)
     assert_equal(2, @pub.drink_stock.length)
+    assert_equal(105, @pub.till)
   end
 
-  def test_customer_has_enough_for_drink
-      assert_equal(true, @pub.customer_has_enough_for_drink(@drink_1.price, 500))
-      assert_equal(false, @pub.customer_has_enough_for_drink(@drink_1.price, 3))
+  def test_customer_can_buy_drink
+      assert_equal(true, @pub.customer_can_buy_drink(@drink_1.price, 500, 18))
+      assert_equal(false, @pub.customer_can_buy_drink(@drink_1.price, 3, 17))
+      assert_equal(false, @pub.customer_can_buy_drink(@drink_1.price, 500, 12))
+
   end
+
+
+
 
 end

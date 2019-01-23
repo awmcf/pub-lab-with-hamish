@@ -35,7 +35,7 @@ class TestCustomer < Minitest::Test
   # end
 
   def test_get_drink
-    @customer_1.get_drink(@pub, "Stella")
+    @customer_1.get_drink(@pub, "Stella", @customer_1.age)
     assert_equal(15, @customer_1.wallet)
     assert_equal(2.5, @customer_1.drunkenness)
     assert_equal(2, @pub.drink_stock.length)
